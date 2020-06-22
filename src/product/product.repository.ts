@@ -32,3 +32,4 @@ export class ProductRepository extends Repository<Product> {
 
         return editedProduct;
     }
+}
