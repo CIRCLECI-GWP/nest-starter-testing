@@ -1,0 +1,28 @@
+name: Add Recently Created Pull Requests and/or Issues to Project Column
+on:
+  pull_request:
+    types: [opened]
+  issues:
+    types: [opened]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: CIRCLECI-GWP/github-project-automation-plus@v1
+      with:
+        project: Maintenance
+        column: To do
+        repo-token: ${{ secrets.PROJECT_ADMIN_TOKEN }}
+      if: "contains(github.head_ref, 'dependencies') && github.event_name == 'pull_request'"
+    - uses: CIRCLECI-GWP/github-project-automation-plus@v1
+      with:
+        project: Maintenance
+        column: In progress
+        repo-token: ${{ secrets.PROJECT_ADMIN_TOKEN }}
+      if: "!contains(github.head_ref, 'dependencies') && github.event_name == 'pull_request'"
+    - uses: CIRCLECI-GWP/github-project-automation-plus@v1
+      with:
+        project: Maintenance
+        column: To do (Others)
+        repo-token: ${{ secrets.PROJECT_ADMIN_TOKEN }}
+      if: "github.event_name == 'issues'"
