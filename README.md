@@ -22,3 +22,4 @@ Reviewers: [Ron Powell][ron], [Stanley Ndagi][stan]
 [gwp-program]: https://circle.ci/3ahQxfu
 [ron]: https://github.com/ronpowelljr
 [stan]: https://github.com/NdagiStanley
+[dominicmotuka]: https://github.com/daumie
